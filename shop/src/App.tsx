@@ -1,4 +1,4 @@
-
+import { number } from 'yargs';
 import './App.scss';
 
 function App() {
