@@ -1,0 +1,12 @@
+{
+    "iphone7":{
+        "name": "Iphone 7",
+        "cost": 500,
+        "description": "desc",
+        "image" : "link",
+        "image2" : "link",
+        "image3" : "link",
+        "image4" : "link",
+        "image5" : "link"
+    }
+}
