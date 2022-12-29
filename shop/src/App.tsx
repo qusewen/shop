@@ -1,9 +1,9 @@
 import { number } from 'yargs';
 import './App.scss';
-import Catalog from './Components/Catalog/Catalog';
-import Categories from './Components/Categories/Categories';
-import Header from './Components/Header/Header';
-import Sort from './Components/Sort/Sort';
+import Catalog from './components/Catalog/Catalog';
+import Categories from './components/Categories/Categories';
+import Header from './components/Header/Header';
+import Sort from './components/Sort/Sort';
 
 function App() {
   return (
