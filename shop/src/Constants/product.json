@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "iPhone 14 Pro Max",
-        "cost": 999,
+        "cost": 1299,
         "color": "Space Black",
         "description": "desc",
         "category": "phone",
@@ -20,7 +20,7 @@
         "id": 2,
         "name": "iPhone 14 Pro",
         "cost": 799,
-        "color": "Black",
+        "color": "Silver",
         "description": "desc",
         "category": "phone",
         "memory": 256,
@@ -88,7 +88,7 @@
         "id": 6,
         "name": "iPhone 14 Pro",
         "cost": 999,
-        "color": "Silver",
+        "color": "Space Black",
         "description": "desc",
         "category": "phone",
         "memory": 256,
@@ -97,9 +97,9 @@
         "cpu": "A16 Bionic",
         "screenType": "Super Retina XDR Pro Motion",
         "frontFacingCamera": 48,
-        "image" : "https://img.mvideo.ru/Big/30065544bb2.jpg",
-        "image2" : "https://img.mvideo.ru/Big/30065544bb2.jpg",
-        "image3" : "https://img.mvideo.ru/Big/30065544bb1.jpg"
+        "image" : "https://static.re-store.ru/upload/resize_cache/iblock/eb4/421_550_2/eb48633cda479ff88b6aeed88144bddf.jpeg",
+        "image2" : "https://static.re-store.ru/upload/resize_cache/iblock/b08/600_600_2/b0865951f0104fffed92febf9182356f.jpeg",
+        "image3" : "https://static.re-store.ru/upload/resize_cache/iblock/940/600_600_2/9409a71c3e9c4612940860de18b40373.jpeg"
     },
     {
         "id": 7,

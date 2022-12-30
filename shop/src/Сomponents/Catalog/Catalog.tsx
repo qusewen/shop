@@ -1,13 +1,18 @@
 import Cards from "../Card/Card";
 import items from "../../Constants/product.json"
 import "./Catalog.scss"
+import { Grid } from "@mui/material";
 
 export default function Catalog() {
   return (
-    <div className="flex-grid">
-    {items.map(item => (
+    // <div className="flex-grid">
+    <Grid container spacing={4}>
+      {items.map(item => (
        <Cards key={item.id} {...item}/>
-    ))}
-    </div>
+      ))}
+    </Grid>
+    
+
+    // </div>
   )
 }
