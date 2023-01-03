@@ -4,6 +4,9 @@ import "./Catalog.scss"
 import { Grid } from "@mui/material";
 
 export default function Catalog() {
+  function handleClick(){
+
+  }
   return (
     // <div className="flex-grid">
     <Grid container spacing={4}>

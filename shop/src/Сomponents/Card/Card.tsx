@@ -12,6 +12,11 @@ type CardsProps = {
 }
 
 export default function Cards({name, cost, image}: CardsProps) {
+  const [allCost, setAllCost] = React.useState(0);
+  function handleClick(){
+    console.log(allCost)
+   return setAllCost(allCost+cost)
+  }
   return (
     <Grid item xs={12} md={4}>
        <Card sx={{ maxWidth: 345 }}>
@@ -31,7 +36,7 @@ export default function Cards({name, cost, image}: CardsProps) {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button variant='outlined'>Buy</Button>
+            <Button onClick={handleClick} variant='outlined' >Buy</Button>
           </CardActions>
         </CardActionArea>
       </Card>
