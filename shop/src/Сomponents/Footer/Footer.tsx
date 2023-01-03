@@ -1,7 +1,13 @@
-import React from 'react'
+import { ShoppingBasket } from '@mui/icons-material'
+import { AppBar, IconButton, TextField, Toolbar, Typography } from '@mui/material'
+import AppleIcon from '@mui/icons-material/Apple';
 
-export default function Footer() {
+type Props = {}
+
+export default function Footer({}: Props) {
   return (
-    <div>Footer</div>
+<>
+
+</>
   )
 }

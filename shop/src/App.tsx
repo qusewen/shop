@@ -5,6 +5,7 @@ import Categories from './Сomponents/Categories/Categories';
 import Header from './Сomponents/Header/Header';
 import Sort from './Сomponents/Sort/Sort';
 import { Container } from '@mui/system';
+import Footer from './Сomponents/Footer/Footer';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Categories/>
       <Sort/>
       <Catalog/>
+      <Footer/>
     </Container>
   );
 }
