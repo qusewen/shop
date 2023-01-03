@@ -9,13 +9,15 @@ import Footer from './Сomponents/Footer/Footer';
 
 function App() {
   return (
-    <Container>
-       <Header/>
-      <Categories/>
-      <Sort/>
-      <Catalog/>
+    <>
+      <Container>
+         <Header/>
+        <Categories/>
+        <Sort/>
+        <Catalog/>
+      </Container>
       <Footer/>
-    </Container>
+    </>
   );
 }
 

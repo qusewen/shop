@@ -1,13 +1,11 @@
-import { ShoppingBasket } from '@mui/icons-material'
-import { AppBar, IconButton, TextField, Toolbar, Typography } from '@mui/material'
-import AppleIcon from '@mui/icons-material/Apple';
+import './Footer.scss'
 
 type Props = {}
 
 export default function Footer({}: Props) {
   return (
 <>
-
+<footer className='footer'>Online Store 2022</footer>
 </>
   )
 }
