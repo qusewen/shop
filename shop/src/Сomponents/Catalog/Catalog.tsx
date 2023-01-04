@@ -1,21 +1,35 @@
 import Cards from "../Card/Card";
-import items from "../../Constants/product.json"
 import "./Catalog.scss"
 import { Grid } from "@mui/material";
 
-export default function Catalog() {
+interface Items {
+  id: number,
+  name: string,
+  cost: number,
+  color: string,
+  description: string,
+  category: string,
+  memory: number,
+  screenSize: number,
+  screenResolution: string,
+  cpu: string,
+  screenType: string,
+  frontFacingCamera?: number,
+  image: string,
+  image2: string,
+  image3: string
+}
+
+export default function Catalog(filtered: Items[]) {
   function handleClick(){
 
   }
+
   return (
-    // <div className="flex-grid">
     <Grid container spacing={4}>
-      {items.map(item => (
+      {Object.values(filtered).map(item => (
        <Cards key={item.id} {...item}/>
       ))}
     </Grid>
-    
-
-    // </div>
   )
 }
