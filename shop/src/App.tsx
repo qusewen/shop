@@ -12,7 +12,21 @@ import items from "../src/Constants/product.json"
 
 function App() {
   const [filtered, setFiltered] = useState(items)
+  const [searchValue, setSearchValue] = useState('')
+
+  const searchFilter = (text: string) => {
+    setSearchValue(text)
+    if(text) {
+      let filteredProducts = items.filter(product => (
+        product.name.toLowerCase().includes(searchValue.toLowerCase())
+      ))
+      setFiltered(filteredProducts)
+    } else {
+      setFiltered(items)
+    }
+  }
   
+
   const categoryFilter = (title: string): void => {
     if(title === 'all') {
       setFiltered(items)
@@ -25,7 +39,7 @@ function App() {
   return (
     <>
       <Container>
-         <Header/>
+        <Header searchFilter={searchFilter}/>
         <Categories categoryFilter={categoryFilter}/>
         <Sort/>
         <Catalog {...filtered}/>

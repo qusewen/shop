@@ -1,6 +1,7 @@
 import Cards from "../Card/Card";
 import "./Catalog.scss"
 import { Grid } from "@mui/material";
+import value from "../Header/Header";
 
 interface Items {
   id: number,

@@ -5,8 +5,12 @@ import React from 'react'
 import './Header.scss'
 
 type Props = {}
+type IProductsProps = {
+  searchFilter: (value: string) => void
+}
 
-export default function Header({}: Props) {
+export default function Header({searchFilter}: IProductsProps) {
+
   return (
     <AppBar color='default'>
       <Toolbar className='nav-bar'>
@@ -16,7 +20,7 @@ export default function Header({}: Props) {
             color="inherit">
               <AppleIcon/>
         </IconButton>
-        <TextField id="outlined-basic" label="Search" variant="outlined" />
+        <TextField id="outlined-basic" label="Search" variant="outlined"size='small' onChange={(event) => searchFilter(event.target.value)}/>
         <IconButton color='inherit'>
               <ShoppingBasket/>
         </IconButton>
