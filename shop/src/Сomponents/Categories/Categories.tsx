@@ -49,9 +49,9 @@ export default function Categories({categoryFilter}: ICategoryProps) {
           onChange={handleChange}
         >
           <MenuItem value={10} onClick={() => categoryFilter(category[0].title)}>All</MenuItem>
-          <MenuItem value={20} onClick={() => categoryFilter(category[1].title)}>Iphone</MenuItem>
+          <MenuItem value={20} onClick={() => categoryFilter(category[1].title)}>iPhone</MenuItem>
           <MenuItem value={30} onClick={() => categoryFilter(category[2].title)}>MacBook</MenuItem>
-          <MenuItem value={40} onClick={() => categoryFilter(category[3].title)}>Ipad</MenuItem>
+          <MenuItem value={40} onClick={() => categoryFilter(category[3].title)}>iPad</MenuItem>
         </Select>
       </FormControl>
     </Box>

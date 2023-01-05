@@ -1,7 +1,6 @@
 import Cards from "../Card/Card";
 import "./Catalog.scss"
 import { Grid } from "@mui/material";
-import value from "../Header/Header";
 
 interface Items {
   id: number,
@@ -27,7 +26,7 @@ export default function Catalog(filtered: Items[]) {
   }
 
   return (
-    <Grid container spacing={4}>
+    <Grid className="grid" container spacing={4}>
       {Object.values(filtered).map(item => (
        <Cards key={item.id} {...item}/>
       ))}
