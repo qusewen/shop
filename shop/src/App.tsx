@@ -9,6 +9,7 @@ import Footer from './Сomponents/Footer/Footer';
 import { useState } from 'react';
 import items from "../src/Constants/product.json"
 import Pricing from './Сomponents/Pricing/Pricing';
+import { Grid } from '@mui/material';
 
 function App() {
   const [filtered, setFiltered] = useState(items)
@@ -62,17 +63,22 @@ function App() {
 
   return (
     <>
-      <Container>
+      <Container maxWidth='xl'>
         <Header searchFilter={searchFilter}/>
-        <Categories categoryFilter={categoryFilter}/>
-        <Sort/>
-        <Pricing
-          handleChange={handleChange}
-          value={value}
-          min={MIN}
-          max={MAX}
-        />
-        <Catalog {...filtered}/>
+        <Grid container spacing={5}>
+          <Grid item xs={3}>
+            <Categories categoryFilter={categoryFilter}/>
+            <Sort/>
+            <Pricing
+              handleChange={handleChange}
+              value={value}
+              min={MIN}
+              max={MAX}
+            />
+          </Grid>
+          <Grid item xs={9}>
+            <Catalog {...filtered}/></Grid>
+        </Grid>
       </Container>
       <Footer/>
     </>

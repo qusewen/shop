@@ -26,7 +26,7 @@ export default function Catalog(filtered: Items[]) {
   }
 
   return (
-    <Grid className="grid" container spacing={4}>
+    <Grid container spacing={4}>
       {Object.values(filtered).map(item => (
        <Cards key={item.id} {...item}/>
       ))}

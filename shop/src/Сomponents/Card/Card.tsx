@@ -4,6 +4,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions, Grid } from '@mui/material';
+import './Card.scss'
+
 
 type CardsProps = {
   name: string,
@@ -19,16 +21,16 @@ export default function Cards({name, cost, image}: CardsProps) {
   }
   return (
     <Grid item xs={12} md={4}>
-       <Card sx={{ maxWidth: 345 }}>
+       <Card sx={{ maxWidth: 235 }}>
         <CardActionArea>
           <CardMedia
             component="img"
-            height="400"
+            height="275"
             image={image}
             alt="iphone"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="subtitle1" component="div">
               {name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
