@@ -6,18 +6,57 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions, Grid } from '@mui/material';
 import './Card.scss'
 
+interface Items {
+  id: number,
+  name: string,
+  cost: number,
+  color: string,
+  description: string,
+  category: string,
+  memory: number,
+  screenSize: number,
+  screenResolution: string,
+  cpu: string,
+  screenType: string,
+  frontFacingCamera?: number,
+  image: string,
+  image2: string,
+  image3: string
+}
 
 type CardsProps = {
   name: string,
   cost: number,
-  image : string
+  image : string,
+  addToCart: (item: Items) => void
 }
 
-export default function Cards({name, cost, image}: CardsProps) {
+type Props = {
+  addToCart: (item: Items) => void
+  item: {
+    id: number,
+    name: string,
+    cost: number,
+    color: string,
+    description: string,
+    category: string,
+    memory: number,
+    screenSize: number,
+    screenResolution: string,
+    cpu: string,
+    screenType: string,
+    frontFacingCamera?: number,
+    image: string,
+    image2: string,
+    image3: string
+  }
+}
+
+export default function Cards({item, addToCart}: Props) {
   const [allCost, setAllCost] = React.useState(0);
   function handleClick(){
     console.log(allCost)
-   return setAllCost(allCost+cost)
+   return setAllCost(allCost+item.cost)
   }
   return (
     <Grid item xs={12} md={4}>
@@ -26,19 +65,19 @@ export default function Cards({name, cost, image}: CardsProps) {
           <CardMedia
             component="img"
             height="275"
-            image={image}
+            image={item.image}
             alt="iphone"
           />
           <CardContent>
             <Typography gutterBottom variant="subtitle1" component="div">
-              {name}
+              {item.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {cost}$
+              {item.cost}$
             </Typography>
           </CardContent>
           <CardActions>
-            <Button onClick={handleClick} variant='outlined' >Buy</Button>
+            <Button onClick={() => addToCart(item)} variant='outlined' >Buy</Button>
           </CardActions>
         </CardActionArea>
       </Card>

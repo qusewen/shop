@@ -6,10 +6,28 @@ import Header from './Сomponents/Header/Header';
 import Sort from './Сomponents/Sort/Sort';
 import { Container } from '@mui/system';
 import Footer from './Сomponents/Footer/Footer';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import items from "../src/Constants/product.json"
 import Pricing from './Сomponents/Pricing/Pricing';
 import { Grid } from '@mui/material';
+
+interface Items {
+  id: number,
+  name: string,
+  cost: number,
+  color: string,
+  description: string,
+  category: string,
+  memory: number,
+  screenSize: number,
+  screenResolution: string,
+  cpu: string,
+  screenType: string,
+  frontFacingCamera?: number,
+  image: string,
+  image2: string,
+  image3: string
+}
 
 function App() {
   const [filtered, setFiltered] = useState(items)
@@ -61,10 +79,31 @@ function App() {
       setFiltered(filteredCost)
   }
 
+  // Добавление товара в корзину
+  const [orders, setOrders] = useState<Items[]>([])
+
+  const addToCart = (item: Items) => {
+    let isInArray = false;
+    orders.forEach(el => {
+      if(el.id === item.id)
+        isInArray = true
+    })
+    if(!isInArray) {
+      setOrders([...orders, item])
+    }
+  }
+
+  // Удаление товара из корзины
+  const deleteFromCart = (id: number) => {
+    setOrders(orders.filter(item => item.id !== id))
+  }
+
+  useEffect(() => {console.log(orders)})
+
   return (
     <>
       <Container maxWidth='xl'>
-        <Header searchFilter={searchFilter}/>
+        <Header searchFilter={searchFilter} deleteFromCart={deleteFromCart} orders={orders}/>
         <Grid container spacing={5}>
           <Grid item xs={3}>
             <Categories categoryFilter={categoryFilter}/>
@@ -77,7 +116,7 @@ function App() {
             />
           </Grid>
           <Grid item xs={9}>
-            <Catalog {...filtered}/></Grid>
+            <Catalog filtered={filtered} addToCart={addToCart}/></Grid>
         </Grid>
       </Container>
       <Footer/>
