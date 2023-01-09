@@ -126,7 +126,7 @@ export default function Cards({item, addToCart}: Props) {
               </div>
             </Box>
           </Dialog>
-          <CardContent>
+          <CardContent onClick={() => showFullItem(item)}>
             <Typography gutterBottom variant="subtitle1" component="div">
               {item.name}
             </Typography>
