@@ -1,6 +1,24 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 
+interface Items {
+    id: number,
+    name: string,
+    cost: number,
+    color: string,
+    description: string,
+    category: string,
+    memory: number,
+    screenSize: number,
+    screenResolution: string,
+    cpu: string,
+    screenType: string,
+    frontFacingCamera?: number,
+    image: string,
+    image2: string,
+    image3: string
+  }
+
 type ItemProps = {
     deleteFromCart: (id: number) => void
     item: {
@@ -20,17 +38,26 @@ type ItemProps = {
         image2: string,
         image3: string
     }
+    totalCost: () => void
+    allOrders: Items[]
+    setAllOrders: (el: Items[]) => void
 }
-function CartItem({item, deleteFromCart}: ItemProps) {
+function CartItem({item, deleteFromCart, totalCost, allOrders, setAllOrders}: ItemProps) {
     const [counterValue, setCounterValue] = useState(1)
 
     const increase = () => {
         setCounterValue(counterValue + 1)
+        if(counterValue >= 1) {
+            setAllOrders([...allOrders, item])
+        }
     }
 
     const decrease = () => {
         if(counterValue > 0) {
             setCounterValue(counterValue - 1)
+            let index = allOrders.findIndex(el => el.id === item.id)
+            allOrders.splice(index, 1)
+            setAllOrders([...allOrders])
         } else {
             return counterValue
         }

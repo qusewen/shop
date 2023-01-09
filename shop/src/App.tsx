@@ -81,33 +81,34 @@ function App() {
 
   // Добавление товара в корзину
   const [orders, setOrders] = useState<Items[]>([])
+  const [allOrders, setAllOrders] = useState<Items[]>([...orders])
 
   const addToCart = (item: Items) => {
     let isInArray = false;
     orders.forEach(el => {
       if(el.id === item.id)
         isInArray = true
+        // setAllOrders([...allOrders, item])
     })
     if(!isInArray) {
       setOrders([...orders, item])
+      setAllOrders([...allOrders, item])
     }
   }
 
   // Удаление товара из корзины
   const deleteFromCart = (id: number) => {
     setOrders(orders.filter(item => item.id !== id))
+    setAllOrders(allOrders.filter(item => item.id !== id))
   }
-
-  useEffect(() => {console.log(orders)})
 
   return (
     <>
       <Container maxWidth='xl'>
-        <Header searchFilter={searchFilter} deleteFromCart={deleteFromCart} orders={orders}/>
+        <Header searchFilter={searchFilter} deleteFromCart={deleteFromCart} orders={orders} allOrders={allOrders} setAllOrders={setAllOrders}/>
         <Grid container spacing={5}>
           <Grid item xs={3}>
             <Categories categoryFilter={categoryFilter}/>
-            <Sort/>
             <Pricing
               handleChange={handleChange}
               value={value}

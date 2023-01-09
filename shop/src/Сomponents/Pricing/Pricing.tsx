@@ -13,7 +13,7 @@ type Props = {
 
 function Pricing({handleChange, value, min, max}: Props) {
     return (
-        <Accordion>
+        <Accordion className='accordion'>
             <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"

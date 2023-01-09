@@ -1,5 +1,5 @@
 import { ShoppingBasket } from '@mui/icons-material'
-import { AppBar, Button, Drawer, IconButton, TextField, Toolbar, Typography } from '@mui/material'
+import { AppBar, Badge, Button, Drawer, IconButton, TextField, Toolbar, Typography } from '@mui/material'
 import AppleIcon from '@mui/icons-material/Apple';
 import React, { useEffect, useState } from 'react'
 import './Header.scss'
@@ -7,30 +7,34 @@ import { Box } from '@mui/system';
 import ClearIcon from '@mui/icons-material/Clear';
 import CartItem from '../CartItem/CartItem';
 
+interface Items {
+  id: number,
+  name: string,
+  cost: number,
+  color: string,
+  description: string,
+  category: string,
+  memory: number,
+  screenSize: number,
+  screenResolution: string,
+  cpu: string,
+  screenType: string,
+  frontFacingCamera?: number,
+  image: string,
+  image2: string,
+  image3: string
+}
+
 type Props = {}
 type IProductsProps = {
   searchFilter: (value: string) => void
   deleteFromCart: (id: number) => void
-  orders: {
-      id: number,
-      name: string,
-      cost: number,
-      color: string,
-      description: string,
-      category: string,
-      memory: number,
-      screenSize: number,
-      screenResolution: string,
-      cpu: string,
-      screenType: string,
-      frontFacingCamera?: number,
-      image: string,
-      image2: string,
-      image3: string
-  }[]
+  orders: Items[]
+  allOrders: Items[]
+  setAllOrders: (el: Items[]) => void
 }
 
-export default function Header({searchFilter, deleteFromCart, orders}: IProductsProps) {
+export default function Header({searchFilter, deleteFromCart, orders, allOrders, setAllOrders}: IProductsProps) {
 
   const [drawerState, setDrawerState] = useState(false)
 
@@ -38,11 +42,36 @@ export default function Header({searchFilter, deleteFromCart, orders}: IProducts
   (event: React.KeyboardEvent | React.MouseEvent) => {
     setDrawerState(open);
   };
-  
-  let sum = 0
+
   const totalCost = () => {
-    orders.forEach(item => sum += item.cost)
+    let sum = 0
+    allOrders.forEach(item => sum += item.cost)
     return sum
+  }
+
+  const showNothing = () => {
+    return (
+      <div className='empty'>
+        <h2>Basket is empty</h2>
+      </div>
+    )
+  }
+
+  const showOrders = () => {
+    return (
+      <>
+        {orders.map(item => (
+          <CartItem key={item.id} item={item} deleteFromCart={deleteFromCart} totalCost={totalCost} allOrders={allOrders} setAllOrders={setAllOrders}/>
+        ))}
+        <div className='card-bottom'>
+          <div className='total'>
+            Total Cost: 
+            <span className='total-cost'>{totalCost()}$</span>
+          </div>
+            <Button variant='contained'>Buy</Button>
+        </div>
+      </>
+    )
   }
 
   return (
@@ -52,27 +81,30 @@ export default function Header({searchFilter, deleteFromCart, orders}: IProducts
             size="large"
             edge="start"
             color="inherit">
-              <AppleIcon/>
+            <AppleIcon/>
         </IconButton>
         <TextField id="outlined-basic" label="Search" variant="outlined"size='small' onChange={(event) => searchFilter(event.target.value)}/>
         <IconButton 
           color='inherit'
           onClick={toggleDrawer(true)}
         >
+            <Badge color="primary" badgeContent={allOrders.length}>
               <ShoppingBasket/>
+            </Badge>
         </IconButton>
         <Drawer
           anchor='right'
           open={drawerState}
           onClose={toggleDrawer(false)}
         >
-           <Box
+          <Box
             sx={{width: 400}} 
             role="presentation"
             className='card-box'
           >
-            {orders.map(item => (
-              <CartItem key={item.id} item={item} deleteFromCart={deleteFromCart}/>
+            {orders.length > 0 ? showOrders() : showNothing()}
+            {/* {orders.map(item => (
+              <CartItem key={item.id} item={item} deleteFromCart={deleteFromCart} totalCost={totalCost} allOrders={allOrders} setAllOrders={setAllOrders}/>
             ))}
             <div className='card-bottom'>
               <div className='total'>
@@ -80,7 +112,7 @@ export default function Header({searchFilter, deleteFromCart, orders}: IProducts
                 <span className='total-cost'>{totalCost()}$</span>
               </div>
               <Button variant='contained'>Buy</Button>
-            </div>
+            </div> */}
           </Box>
         </Drawer>
       </Toolbar>
