@@ -1,0 +1,41 @@
+.full-item__box {
+    padding: 50px 150px;
+    font-family: "Roboto","Helvetica","Arial", sans-serif;
+
+    display: flex;
+    justify-content: flex-start;
+
+
+    .full-item__charac {
+        font-weight: 600;
+        margin-right: 100px;
+        align-self: center;
+
+        & > div:not(:last-of-type) {
+            margin-bottom: 10px;
+        }
+
+        span {
+            font-weight: 100;
+        }
+    }
+
+    img {
+        width: 400px;
+        margin-right: 50px;
+    }
+
+    .full-item__buy {
+
+        .full-item__name {
+            font-weight: 700;
+            font-size: 40px;
+            margin-bottom: 30px;
+        }
+    
+        .full-item__cost {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+    }
+}

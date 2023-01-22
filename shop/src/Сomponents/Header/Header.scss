@@ -1,0 +1,84 @@
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-box {
+    padding: 15px;
+    font-family: "Roboto","Helvetica","Arial", sans-serif;
+}
+
+.card-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgb(235, 235, 232);
+    padding-top: 20px;
+
+    h3 {
+        font-weight: 400;
+    }
+    img {
+        width: 100px;
+    }
+
+    .card-item-info {
+        margin-left: 20px;
+        
+        .card-item-price {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 20px;
+
+            .card-counter {
+                display: flex;
+                align-items: center;
+                background-color: rgb(235, 235, 232);
+                margin-right: 20px;
+                border-radius: 10px;
+
+                .card-counter-minus {
+                    padding: 5px 10px 5px 10px;
+                    border-radius: 10px 0 0 10px;
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+                    user-select: none;
+                }
+                .card-counter-minus:hover {
+                    background-color: rgb(201, 201, 197);
+                }
+                .card-counter-amount {
+                    padding: 0 10px 0 10px;
+                    user-select: none;
+                }
+                .card-counter-plus {
+                    padding: 5px 10px 5px 10px;
+                    border-radius: 0 10px 10px 0;
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+                    user-select: none;
+                }
+                .card-counter-plus:hover {
+                    background-color: rgb(201, 201, 197);
+                }
+            }
+        }
+    }
+}
+
+.card-bottom {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.total {
+    font-weight: 500;
+    font-size: 18px;
+    .total-cost {
+        margin-left: 8px;
+        font-weight: 700;
+    }
+}
